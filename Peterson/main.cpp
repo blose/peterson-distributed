@@ -5,10 +5,9 @@
 #else
 #include <mpi.h>
 #endif
-#include <math.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
+#include <cstdlib>
+#include <cstdio>
+#include <ctime>
 
 #include <iostream>
 #include <fstream>
@@ -30,7 +29,7 @@
 
 
 #define MAX_FILENAME_LENGTH 1000
-#define DEFAULT_INPUT_FILENAME  "input.txt.0000"
+#define DEFAULT_INPUT_FILENAME  "input.txt.0020"
 #define DEFAULT_OUTPUT_FILENAME "output.txt"
 
 //#define TMP //vklyuchenie rascheta pravoj chasti dlya otladki
@@ -278,7 +277,7 @@ int main(int argc, char **argv) {
       left_Receiver=(elements[0]->out_left)+log(1-(elements[0]->r_left)); //menyaem "*" na "+", t.k. u=e^t i poyavlyaetsya Ln!!!
       
       
-      if (t - lastOutputTime >=1.0e-12/*5.1e-10/*1.0e-5/* 1.0e-11/*e-11/*-10 /*1e-9 /* 5.0e-15*/)
+      if (t - lastOutputTime >=1.0e-10)
       {
 	  lastOutputTime = t;
 	   
@@ -346,7 +345,7 @@ int main(int argc, char **argv) {
       
       
       for (i=0; i< N_of_elements; i++){
-	elements[i]-> calculation(t);
+		  elements[i]->calculation(t);
       }
       
       

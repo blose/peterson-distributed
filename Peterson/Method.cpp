@@ -1,5 +1,5 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include "definitions.h"
 #include "Method.h"
 #include <sstream>
@@ -58,14 +58,21 @@ Method::Method(const std::map<std::string,real> &data) : Propagator() {
     
     N=lroundl(Length/dx)+2;
     std::cout<<N<< std::endl;
-    
+
+	populationHalf.resize(N);
+	population.resize(N);
+	uRight.resize(N);
+	uLeft.resize(N);
+	uRightHalf.resize(N);
+	uLeftHalf.resize(N);
+
     int i;
     for (i=0;i<N;i++) {
-	uRight.push_back(-0.923013 /*0.809456*/);
-	uLeft.push_back(-0.923013 /*0.809456*/);
-	uRightHalf.push_back(-0.923013 /*0.809456*/);
-	uLeftHalf.push_back(-0.923013 /*0.809456*/);
-    }
+		uRight[i] = -0.923013; /*0.809456*/
+		uLeft[i] = -0.923013; /*0.809456*/
+		uRightHalf[i] = -0.923013; /*0.809456*/
+		uLeftHalf[i] = -0.923013; /*0.809456*/
+	}
     
     out_left=-0.923013;
     out_right=-0.923013;

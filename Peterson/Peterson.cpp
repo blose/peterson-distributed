@@ -6,7 +6,6 @@ NeodimPeterson::NeodimPeterson(const std::map<std::string,real> &data): Method(d
 {	
     className = "NeodimPeterson";
     int i;
-    real longitudinalPump, initialExcitation;
     READ(data,a);
     READ(data,gx);
     READ(data,gy);
@@ -22,13 +21,14 @@ NeodimPeterson::NeodimPeterson(const std::map<std::string,real> &data): Method(d
     
     refraction=nRefNeodim;
     
-    
-    for (i=0; i<N; i++){
-	population.push_back(0.557215 /*0.529045*/);//(-1);
-    }  
-    for (i=0; i<N-1; i++){
-	populationHalf.push_back(0.557215 /*0.529045*/);//(-1);
-    }
+	for (auto& p : population)
+	{
+		p = 0.557215;
+	}
+	for (auto& p : populationHalf)
+	{
+		p = 0.557215;
+	}
 }
 
 real NeodimPeterson::rightPartPopulation(real u, real population_, int i)
@@ -57,13 +57,15 @@ AbsorberPeterson::AbsorberPeterson(const std::map<std::string,real> &data) : Met
     READ(data,alphaL);
     READ(data,tauC);
     
-    for (i=0; i<N; i++){
-	population.push_back(-1.0);//(-1);
-    }  
-    for (i=0; i<N-1; i++){
-	populationHalf.push_back(-1.0);//(-1);
-    }
-    
+	for (auto& p : population)
+	{
+		p = -1.0;
+	}
+	for (auto& p : populationHalf)
+	{
+		p = -1.0;
+	}
+
     refraction=nRefSat;
 }
 

@@ -18,8 +18,10 @@ public:
   real *in_Left, *in_Right;
   
   //metody classa
+protected:
   Propagator();
-  ~Propagator();// destructor
+  virtual ~Propagator();// destructor
+public:
   virtual void calculation(real t);
   
   virtual std::string toString(); //preobrazuet vsyu vnutrennist' klassa v JSON stroku
